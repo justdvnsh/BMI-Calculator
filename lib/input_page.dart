@@ -2,6 +2,13 @@
 import 'package:flutter/material.dart';
 import 'ReusableCard.dart';
 
+// consts.
+// heights and widths
+const bottomButtonHeight = 80.0;
+// colors
+const primaryColor = Color(0XFF1D1E33);
+const accentColor = Color(0XFFEB1555);
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -23,12 +30,12 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0XFF1D1E33),
+                    colour: primaryColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0XFF1D1E33),
+                    colour: primaryColor,
                   ),
                 ),
               ],
@@ -36,7 +43,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              colour: Color(0XFF1D1E33),
+              colour: primaryColor,
             ),
           ),
           Expanded(
@@ -44,15 +51,24 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0XFF1D1E33),
+                    colour: primaryColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0XFF1D1E33),
+                    colour: primaryColor,
                   ),
                 ),
               ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: bottomButtonHeight,
+            color: accentColor,
+            margin: EdgeInsets.only(top: 10.0),
+            child: Center(
+                child: Text('Calculate Your BMI !'),
             ),
           ),
         ],
