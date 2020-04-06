@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'constants.dart';
 import 'package:bmi_calculator/RoundIconButton.dart';
+import 'results.dart';
 
 // enum for gender
 enum Gender {
@@ -210,13 +211,21 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            width: double.infinity,
-            height: bottomButtonHeight,
-            color: accentColor,
-            margin: EdgeInsets.only(top: 10.0),
-            child: Center(
-                child: Text('Calculate Your BMI !'),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Results()),
+              );
+            },
+            child: Container(
+              width: double.infinity,
+              height: bottomButtonHeight,
+              color: accentColor,
+              margin: EdgeInsets.only(top: 10.0),
+              child: Center(
+                  child: Text('Calculate Your BMI !'),
+              ),
             ),
           ),
         ],
