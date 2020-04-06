@@ -4,6 +4,7 @@ import 'ReusableCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'constants.dart';
+import 'package:bmi_calculator/RoundIconButton.dart';
 
 // enum for gender
 enum Gender {
@@ -18,6 +19,9 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
 
   Gender selectedGender;
+  int height = 180;
+  int weight = 50;
+  int age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +84,7 @@ class _InputPageState extends State<InputPage> {
                     textBaseline: TextBaseline.alphabetic,
                     children: <Widget>[
                       Text(
-                        "180",
+                        height.toString(),
                         style: numberTextStyle,
                       ),
                       Text(
@@ -88,6 +92,26 @@ class _InputPageState extends State<InputPage> {
                         style: labelTextStyle,
                       ),
                     ],
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      thumbColor: Color(0XFFEB15555),
+                      activeTrackColor: Colors.white,
+                      overlayColor: Color(0X29EB15555),
+                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                      overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0)
+                    ),
+                    child: Slider(
+                      value: height.toDouble(),
+                      inactiveColor: Color(0XFF8D8E98),
+                      min: 120.0,
+                      max: 220.0,
+                      onChanged: (double newValue) {
+                        this.setState(() {
+                          height = newValue.round();
+                        });
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -99,11 +123,88 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colour: primaryColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("WEIGHT", style: labelTextStyle,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: <Widget>[
+                            Text(weight.toString(), style: numberTextStyle,),
+                            Text("KG", style: labelTextStyle,)
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RoundIconButton(
+                              iconData: FontAwesomeIcons.minus,
+                              onClick: () {
+                                this.setState(() {
+                                  weight = weight - 1;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RoundIconButton(
+                              iconData: FontAwesomeIcons.plus,
+                              onClick: () {
+                                this.setState(() {
+                                  weight = weight + 1;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     colour: primaryColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("AGE", style: labelTextStyle,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: <Widget>[
+                            Text(age.toString(), style: numberTextStyle,),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RoundIconButton(
+                              iconData: FontAwesomeIcons.minus,
+                              onClick: () {
+                                this.setState(() {
+                                  age = age - 1;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RoundIconButton(
+                              iconData: FontAwesomeIcons.plus,
+                              onClick: () {
+                                this.setState(() {
+                                  age = age + 1;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
