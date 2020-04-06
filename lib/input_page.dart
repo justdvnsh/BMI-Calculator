@@ -1,4 +1,5 @@
 
+import 'package:bmi_calculator/Calculator.dart';
 import 'package:flutter/material.dart';
 import 'ReusableCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -213,9 +214,15 @@ class _InputPageState extends State<InputPage> {
           ),
           GestureDetector(
             onTap: () {
+              Calculator calc = Calculator(height: height, weight: weight);
+
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Results()),
+                MaterialPageRoute(builder: (context) => Results(
+                  bmi: calc.calculateBMI(),
+                  results: calc.getResults(),
+                  interpretation: calc.getInterpretation(),
+                )),
               );
             },
             child: Container(
